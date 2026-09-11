@@ -179,12 +179,6 @@
             font-weight: 500;
         }
 
-        /*
-            防止中文标题出现
-            “雏步的个人空”
-            “间”
-        */
-
         .hero-title span {
             display: block;
 
@@ -214,7 +208,7 @@
 
 
         /* ==================================================
-           04 首页主视觉图片
+           04 首页主视觉
         ================================================== */
 
         .hero-image {
@@ -329,7 +323,7 @@
 
 
         /* ==================================================
-           06 通用 SECTION
+           06 SECTION
         ================================================== */
 
         section {
@@ -416,8 +410,6 @@
 
 
 
-        /* 头像外部 */
-
         .avatar-wrap {
             position: relative;
 
@@ -429,8 +421,6 @@
         }
 
 
-
-        /* 错位细框 */
 
         .avatar-wrap::before {
             content: "";
@@ -452,8 +442,6 @@
         }
 
 
-
-        /* 头像 */
 
         .avatar {
             position: relative;
@@ -559,10 +547,6 @@
 
 
 
-        /*
-            每一个作品
-        */
-
         .work-item {
             display: grid;
 
@@ -578,7 +562,17 @@
 
 
         /*
-            第二个作品左右翻转
+            第一个作品整块可点击
+        */
+
+        .work-link {
+            cursor: pointer;
+        }
+
+
+
+        /*
+            第二项左右反转
         */
 
         .work-item.reverse {
@@ -598,7 +592,7 @@
 
 
         /* ==================================================
-           作品视觉图
+           作品视觉
         ================================================== */
 
         .work-visual {
@@ -611,19 +605,9 @@
 
             background:
                 #e8e4dc;
-
-            cursor: pointer;
         }
 
 
-
-        /*
-            这里暂时不用上传图片。
-
-            先使用日系渐变占位图，
-            等以后上传 work01.jpg 等图片后，
-            再替换即可。
-        */
 
         .work-placeholder {
             width: 100%;
@@ -635,26 +619,31 @@
             overflow: hidden;
 
             transition:
-                transform 0.8s ease;
+                transform 0.8s ease,
+                filter 0.8s ease;
         }
 
 
 
-        /* Project 01 */
+        /*
+            GAME ROOM
+        */
 
         .work-placeholder.one {
             background:
                 linear-gradient(
                     135deg,
-                    #dad8cf 0%,
-                    #aab8aa 48%,
-                    #6f8175 100%
+                    #cfd9c8 0%,
+                    #91a68d 48%,
+                    #586d5e 100%
                 );
         }
 
 
 
-        /* Project 02 */
+        /*
+            DESIGN
+        */
 
         .work-placeholder.two {
             background:
@@ -668,7 +657,9 @@
 
 
 
-        /* Project 03 */
+        /*
+            STORY
+        */
 
         .work-placeholder.three {
             background:
@@ -683,7 +674,7 @@
 
 
         /*
-            微弱圆形装饰
+            圆形装饰
         */
 
         .work-placeholder::before {
@@ -712,7 +703,7 @@
 
 
         /*
-            内部细线
+            底部细线
         */
 
         .work-placeholder::after {
@@ -734,10 +725,6 @@
 
 
 
-        /*
-            占位文字
-        */
-
         .placeholder-title {
             position: absolute;
 
@@ -746,7 +733,7 @@
             top: 12%;
 
             color:
-                rgba(255,255,255,0.88);
+                rgba(255,255,255,0.9);
 
             font-family:
                 Georgia,
@@ -779,7 +766,7 @@
 
 
         /* ==================================================
-           VIEW PROJECT
+           鼠标悬停提示
         ================================================== */
 
         .work-view {
@@ -795,7 +782,7 @@
                 10px 15px;
 
             background:
-                rgba(247,245,240,0.9);
+                rgba(247,245,240,0.92);
 
             font-size: 11px;
 
@@ -813,18 +800,31 @@
 
 
 
-        .work-visual:hover
+        /*
+            鼠标经过视觉图
+        */
+
+        .work-item:hover
         .work-placeholder {
             transform:
                 scale(1.035);
         }
 
-        .work-visual:hover
+        .work-item:hover
         .work-view {
             opacity: 1;
 
             transform:
                 translateY(0);
+        }
+
+
+
+        /* 第一项额外效果 */
+
+        .work-link:hover
+        .work-info h3 {
+            opacity: 0.6;
         }
 
 
@@ -872,6 +872,9 @@
             font-weight: 500;
 
             letter-spacing: 1px;
+
+            transition:
+                opacity 0.3s ease;
         }
 
         .work-info p {
@@ -1023,7 +1026,8 @@
             .hero-image img {
                 height: auto;
 
-                aspect-ratio: 4 / 5;
+                aspect-ratio:
+                    4 / 5;
             }
 
             .vertical-japanese {
@@ -1225,6 +1229,7 @@
 
     <header>
 
+
         <a
             class="logo"
             href="#home">
@@ -1234,25 +1239,40 @@
         </a>
 
 
+
         <nav>
 
+
             <a href="#home">
+
                 首页
+
             </a>
+
 
             <a href="#about">
+
                 关于
+
             </a>
+
 
             <a href="#works">
+
                 作品
+
             </a>
+
 
             <a href="#contact">
+
                 联系
+
             </a>
 
+
         </nav>
+
 
     </header>
 
@@ -1263,7 +1283,7 @@
 
 
         <!-- ==================================================
-             首页 HERO
+             首页
         ================================================== -->
 
         <section
@@ -1281,17 +1301,26 @@
                 </div>
 
 
+
                 <h1 class="hero-title">
 
-                    <span>
-                        雏步的
-                    </span>
 
                     <span>
-                        个人空间
+
+                        雏步的
+
                     </span>
+
+
+                    <span>
+
+                        个人空间
+
+                    </span>
+
 
                 </h1>
+
 
 
                 <div class="hero-description">
@@ -1301,6 +1330,7 @@
                     记录那些值得留下的片刻。
 
                 </div>
+
 
 
                 <div class="hero-line"></div>
@@ -1358,15 +1388,23 @@
                 </div>
 
 
+
                 <div class="section-heading-text">
 
+
                     <span>
+
                         ABOUT
+
                     </span>
 
+
                     <h2>
+
                         关于我
+
                     </h2>
+
 
                 </div>
 
@@ -1468,15 +1506,23 @@
                 </div>
 
 
+
                 <div class="section-heading-text">
 
+
                     <span>
+
                         WORKS
+
                     </span>
 
+
                     <h2>
+
                         我的作品
+
                     </h2>
+
 
                 </div>
 
@@ -1489,11 +1535,15 @@
 
 
 
-                <!-- ==============================
+                <!-- ==================================================
                      WORK 01
-                ============================== -->
+                     GAME ROOM
+                     整个区域可以点击
+                ================================================== -->
 
-                <article class="work-item">
+                <a
+                    class="work-item work-link"
+                    href="work01.html">
 
 
                     <div class="work-visual">
@@ -1505,7 +1555,8 @@
 
                             <div class="placeholder-title">
 
-                                PROJECT
+                                GAME<br>
+                                ROOM
 
                             </div>
 
@@ -1522,7 +1573,7 @@
 
                         <div class="work-view">
 
-                            VIEW PROJECT →
+                            ENTER GAME ROOM →
 
                         </div>
 
@@ -1543,23 +1594,23 @@
 
                         <div class="work-category">
 
-                            GAME DEVELOPMENT / 2026
+                            WEB GAMES / 2026
 
                         </div>
 
 
                         <h3>
 
-                            Project One
+                            Game Room
 
                         </h3>
 
 
                         <p>
 
-                            这里可以放你的第一个主要作品。
-                            例如游戏项目、原创企划，
-                            或者正在长期制作的个人作品。
+                            我制作的网页小游戏合集。
+                            无需下载安装，
+                            点击即可直接在浏览器中游玩。
 
                         </p>
 
@@ -1570,13 +1621,13 @@
                     </div>
 
 
-                </article>
+                </a>
 
 
 
-                <!-- ==============================
+                <!-- ==================================================
                      WORK 02
-                ============================== -->
+                ================================================== -->
 
                 <article
                     class="work-item reverse">
@@ -1608,7 +1659,7 @@
 
                         <div class="work-view">
 
-                            VIEW PROJECT →
+                            COMING SOON
 
                         </div>
 
@@ -1636,16 +1687,16 @@
 
                         <h3>
 
-                            Project Two
+                            Character Design
 
                         </h3>
 
 
                         <p>
 
-                            第二个区域可以展示角色设计、
-                            插画、美术设定，
-                            或任何视觉创作内容。
+                            这里可以用于展示角色设计、
+                            人物设定、美术素材以及
+                            其他视觉创作内容。
 
                         </p>
 
@@ -1660,9 +1711,9 @@
 
 
 
-                <!-- ==============================
+                <!-- ==================================================
                      WORK 03
-                ============================== -->
+                ================================================== -->
 
                 <article class="work-item">
 
@@ -1693,7 +1744,7 @@
 
                         <div class="work-view">
 
-                            VIEW PROJECT →
+                            COMING SOON
 
                         </div>
 
@@ -1721,16 +1772,16 @@
 
                         <h3>
 
-                            Project Three
+                            Story & Archive
 
                         </h3>
 
 
                         <p>
 
-                            这里可以保存故事设定、
-                            世界观、文字创作，
-                            或者已经完成的作品档案。
+                            这里可以保存故事、
+                            世界观、创作资料，
+                            以及已经完成的作品档案。
 
                         </p>
 
@@ -1770,15 +1821,23 @@
                 </div>
 
 
+
                 <div class="section-heading-text">
 
+
                     <span>
+
                         CONTACT
+
                     </span>
 
+
                     <h2>
+
                         联系
+
                     </h2>
+
 
                 </div>
 
@@ -1822,7 +1881,6 @@
         </section>
 
 
-
     </main>
 
 
@@ -1853,10 +1911,11 @@
 
 
     <!-- ==================================================
-         滚动出现动画
+         滚动淡入动画
     ================================================== -->
 
     <script>
+
 
         const revealElements =
             document.querySelectorAll(
@@ -1869,13 +1928,16 @@
 
                 (entries) => {
 
+
                     entries.forEach(
 
                         (entry) => {
 
+
                             if (
                                 entry.isIntersecting
                             ) {
+
 
                                 entry.target
                                     .classList
@@ -1887,11 +1949,14 @@
                                         entry.target
                                     );
 
+
                             }
+
 
                         }
 
                     );
+
 
                 },
 
@@ -1906,13 +1971,16 @@
 
             (element) => {
 
+
                 observer.observe(
                     element
                 );
 
+
             }
 
         );
+
 
     </script>
 
