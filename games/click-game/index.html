@@ -1,0 +1,1478 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="SUSATO GAME ROOM - 点击挑战">
+
+    <title>点击挑战｜SUSATO GAME ROOM</title>
+
+
+    <style>
+
+        /* ==================================================
+           基础
+        ================================================== */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            min-height: 100%;
+        }
+
+        body {
+            font-family:
+                "Hiragino Kaku Gothic ProN",
+                "Yu Gothic",
+                "YuGothic",
+                "Microsoft YaHei",
+                sans-serif;
+
+            background: #f7f5f0;
+            color: #2d2d2d;
+
+            overflow-x: hidden;
+        }
+
+        button,
+        a {
+            font: inherit;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+
+
+        /* ==================================================
+           顶部
+        ================================================== */
+
+        header {
+            height: 82px;
+
+            padding: 0 6%;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            position: fixed;
+            top: 0;
+            left: 0;
+
+            width: 100%;
+
+            z-index: 1000;
+
+            background:
+                rgba(247,245,240,0.94);
+
+            border-bottom:
+                1px solid #dedbd4;
+
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .logo {
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 5px;
+        }
+
+        .back {
+            font-size: 11px;
+            letter-spacing: 2px;
+
+            transition:
+                opacity 0.3s ease;
+        }
+
+        .back:hover {
+            opacity: 0.45;
+        }
+
+
+
+        /* ==================================================
+           主体
+        ================================================== */
+
+        main {
+            padding:
+                135px 6% 80px;
+        }
+
+        .game-page {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+
+
+        /* ==================================================
+           标题
+        ================================================== */
+
+        .game-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+
+            gap: 50px;
+
+            margin-bottom: 45px;
+        }
+
+        .small-title {
+            margin-bottom: 12px;
+
+            font-size: 11px;
+            letter-spacing: 5px;
+
+            color: #99938b;
+        }
+
+        h1 {
+            margin: 0;
+
+            font-size:
+                clamp(40px, 6vw, 82px);
+
+            font-weight: 500;
+
+            line-height: 1;
+
+            letter-spacing: 2px;
+        }
+
+        .english-title {
+            margin-top: 14px;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 15px;
+
+            letter-spacing: 5px;
+
+            color: #99938b;
+        }
+
+        .heading-note {
+            max-width: 310px;
+
+            font-size: 13px;
+            line-height: 2;
+
+            color: #77716a;
+        }
+
+
+
+        /* ==================================================
+           状态栏
+        ================================================== */
+
+        .status-bar {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            margin-bottom: 20px;
+
+            border-top:
+                1px solid #aaa49b;
+
+            border-bottom:
+                1px solid #dedbd4;
+        }
+
+        .status-item {
+            padding:
+                18px 22px;
+
+            border-right:
+                1px solid #dedbd4;
+        }
+
+        .status-item:last-child {
+            border-right: none;
+        }
+
+        .status-label {
+            margin-bottom: 4px;
+
+            font-size: 9px;
+
+            letter-spacing: 3px;
+
+            color: #99938b;
+        }
+
+        .status-value {
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 25px;
+        }
+
+        .combo-value {
+            transition:
+                transform 0.15s ease;
+        }
+
+        .combo-value.pop {
+            transform: scale(1.25);
+        }
+
+
+
+        /* ==================================================
+           游戏区域
+        ================================================== */
+
+        .game-area {
+            width: 100%;
+
+            height: 560px;
+
+            position: relative;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #dfe5d9 0%,
+                    #c9d3c5 42%,
+                    #a9b9aa 100%
+                );
+
+            border:
+                1px solid #d0ccc4;
+
+            cursor: crosshair;
+
+            touch-action: manipulation;
+
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+
+
+        /* 背景装饰圆 */
+
+        .game-area::before {
+            content: "";
+
+            width: 430px;
+            height: 430px;
+
+            position: absolute;
+
+            top: 50%;
+            left: 50%;
+
+            transform:
+                translate(-50%, -50%);
+
+            border:
+                1px solid
+                rgba(255,255,255,0.32);
+
+            border-radius: 50%;
+
+            pointer-events: none;
+        }
+
+
+
+        /* 背景十字线 */
+
+        .game-area::after {
+            content: "";
+
+            width: 70%;
+            height: 1px;
+
+            position: absolute;
+
+            left: 15%;
+            top: 50%;
+
+            background:
+                rgba(255,255,255,0.28);
+
+            pointer-events: none;
+        }
+
+
+
+        /* ==================================================
+           点击目标
+        ================================================== */
+
+        .target {
+            width: 64px;
+            height: 64px;
+
+            position: absolute;
+
+            left: 50%;
+            top: 50%;
+
+            transform:
+                translate(-50%, -50%)
+                scale(0);
+
+            border:
+                1px solid
+                rgba(255,255,255,0.8);
+
+            border-radius: 50%;
+
+            background:
+                rgba(247,245,240,0.93);
+
+            box-shadow:
+                0 8px 28px
+                rgba(73,88,74,0.16);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            cursor: pointer;
+
+            z-index: 10;
+
+            transition:
+                transform 0.12s ease,
+                width 0.2s ease,
+                height 0.2s ease;
+
+            touch-action: manipulation;
+        }
+
+        .target::before {
+            content: "";
+
+            width: 15px;
+            height: 15px;
+
+            border-radius: 50%;
+
+            background: #627865;
+        }
+
+        .target.active {
+            transform:
+                translate(-50%, -50%)
+                scale(1);
+        }
+
+        .target.hit {
+            transform:
+                translate(-50%, -50%)
+                scale(0.72);
+        }
+
+
+
+        /* ==================================================
+           开始 / 结束遮罩
+        ================================================== */
+
+        .game-overlay {
+            position: absolute;
+
+            inset: 0;
+
+            z-index: 50;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 30px;
+
+            background:
+                rgba(247,245,240,0.90);
+
+            text-align: center;
+
+            transition:
+                opacity 0.35s ease,
+                visibility 0.35s ease;
+        }
+
+        .game-overlay.hidden {
+            opacity: 0;
+            visibility: hidden;
+
+            pointer-events: none;
+        }
+
+        .overlay-content {
+            max-width: 470px;
+        }
+
+        .overlay-code {
+            margin-bottom: 15px;
+
+            font-size: 10px;
+
+            letter-spacing: 4px;
+
+            color: #99938b;
+        }
+
+        .overlay-content h2 {
+            margin:
+                0 0 15px;
+
+            font-size: 34px;
+
+            font-weight: 500;
+
+            letter-spacing: 2px;
+        }
+
+        .overlay-content p {
+            margin:
+                0 auto 30px;
+
+            font-size: 14px;
+
+            line-height: 2;
+
+            color: #706a63;
+        }
+
+
+
+        /* ==================================================
+           按钮
+        ================================================== */
+
+        .main-button {
+            min-width: 180px;
+
+            padding:
+                14px 24px;
+
+            border:
+                1px solid #555b55;
+
+            background: transparent;
+
+            color: #2d2d2d;
+
+            font-size: 11px;
+
+            letter-spacing: 3px;
+
+            cursor: pointer;
+
+            transition:
+                background 0.3s ease,
+                color 0.3s ease;
+        }
+
+        .main-button:hover {
+            background: #4f6152;
+            color: #ffffff;
+        }
+
+
+
+        /* ==================================================
+           浮动得分
+        ================================================== */
+
+        .score-float {
+            position: absolute;
+
+            z-index: 30;
+
+            pointer-events: none;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 18px;
+
+            color: #ffffff;
+
+            text-shadow:
+                0 1px 8px
+                rgba(0,0,0,0.18);
+
+            animation:
+                scoreFloat 0.65s ease forwards;
+        }
+
+        @keyframes scoreFloat {
+
+            from {
+                opacity: 1;
+                transform:
+                    translate(-50%, 0);
+            }
+
+            to {
+                opacity: 0;
+                transform:
+                    translate(-50%, -45px);
+            }
+
+        }
+
+
+
+        /* ==================================================
+           底部说明
+        ================================================== */
+
+        .game-footer {
+            display: flex;
+            justify-content: space-between;
+
+            gap: 30px;
+
+            padding-top: 25px;
+
+            font-size: 11px;
+
+            letter-spacing: 2px;
+
+            color: #99938b;
+        }
+
+        .rule {
+            line-height: 2;
+        }
+
+
+
+        /* ==================================================
+           手机
+        ================================================== */
+
+        @media (max-width: 760px) {
+
+            header {
+                height: 70px;
+                padding: 0 5%;
+            }
+
+            .logo {
+                font-size: 14px;
+            }
+
+            main {
+                padding:
+                    110px 5% 60px;
+            }
+
+            .game-heading {
+                display: block;
+            }
+
+            .heading-note {
+                margin-top: 25px;
+            }
+
+            .status-bar {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .status-item:nth-child(2) {
+                border-right: none;
+            }
+
+            .status-item:nth-child(1),
+            .status-item:nth-child(2) {
+                border-bottom:
+                    1px solid #dedbd4;
+            }
+
+            .game-area {
+                height: 58vh;
+
+                min-height: 430px;
+
+                max-height: 620px;
+            }
+
+            .target {
+                width: 68px;
+                height: 68px;
+            }
+
+            .game-footer {
+                flex-direction: column;
+
+                gap: 10px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+
+<body>
+
+
+
+<header>
+
+    <a
+        class="logo"
+        href="../../index.html">
+
+        SUSATO
+
+    </a>
+
+
+    <a
+        class="back"
+        href="../../work01.html">
+
+        ← BACK TO GAME ROOM
+
+    </a>
+
+</header>
+
+
+
+<main>
+
+    <div class="game-page">
+
+
+
+        <!-- ================================================
+             游戏标题
+        ================================================= -->
+
+        <section class="game-heading">
+
+
+            <div>
+
+                <div class="small-title">
+
+                    GAME / 001
+
+                </div>
+
+
+                <h1>
+
+                    点击挑战
+
+                </h1>
+
+
+                <div class="english-title">
+
+                    CLICK CHALLENGE
+
+                </div>
+
+            </div>
+
+
+            <div class="heading-note">
+
+                30 秒内尽可能多地点击目标。<br>
+
+                连续命中可以获得额外分数，
+                点击空白区域则会中断连击。
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ================================================
+             状态栏
+        ================================================= -->
+
+        <div class="status-bar">
+
+
+            <div class="status-item">
+
+                <div class="status-label">
+
+                    TIME
+
+                </div>
+
+                <div
+                    class="status-value"
+                    id="timeValue">
+
+                    30.0
+
+                </div>
+
+            </div>
+
+
+            <div class="status-item">
+
+                <div class="status-label">
+
+                    SCORE
+
+                </div>
+
+                <div
+                    class="status-value"
+                    id="scoreValue">
+
+                    0
+
+                </div>
+
+            </div>
+
+
+            <div class="status-item">
+
+                <div class="status-label">
+
+                    COMBO
+
+                </div>
+
+                <div
+                    class="status-value combo-value"
+                    id="comboValue">
+
+                    0
+
+                </div>
+
+            </div>
+
+
+            <div class="status-item">
+
+                <div class="status-label">
+
+                    BEST
+
+                </div>
+
+                <div
+                    class="status-value"
+                    id="bestValue">
+
+                    0
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- ================================================
+             游戏区域
+        ================================================= -->
+
+        <div
+            class="game-area"
+            id="gameArea">
+
+
+            <!-- 目标 -->
+
+            <button
+                class="target"
+                id="target"
+                aria-label="点击目标">
+
+            </button>
+
+
+
+            <!-- 开始遮罩 -->
+
+            <div
+                class="game-overlay"
+                id="startOverlay">
+
+
+                <div class="overlay-content">
+
+
+                    <div class="overlay-code">
+
+                        GAME 001 / READY
+
+                    </div>
+
+
+                    <h2>
+
+                        准备好了吗？
+
+                    </h2>
+
+
+                    <p>
+
+                        点击出现的圆形目标获得分数。<br>
+
+                        目标会不断改变位置，
+                        越到后面移动得越快。
+
+                    </p>
+
+
+                    <button
+                        class="main-button"
+                        id="startButton">
+
+                        START GAME
+
+                    </button>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- 游戏结束遮罩 -->
+
+            <div
+                class="game-overlay hidden"
+                id="endOverlay">
+
+
+                <div class="overlay-content">
+
+
+                    <div class="overlay-code">
+
+                        GAME 001 / RESULT
+
+                    </div>
+
+
+                    <h2>
+
+                        挑战结束
+
+                    </h2>
+
+
+                    <p id="resultText">
+
+                        SCORE / 0
+
+                    </p>
+
+
+                    <button
+                        class="main-button"
+                        id="restartButton">
+
+                        PLAY AGAIN
+
+                    </button>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- ================================================
+             游戏说明
+        ================================================= -->
+
+        <div class="game-footer">
+
+
+            <div class="rule">
+
+                HIT / +100 基础分<br>
+                COMBO / 连击越高，奖励越高
+
+            </div>
+
+
+            <div>
+
+                PC / MOUSE<br>
+                MOBILE / TOUCH
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</main>
+
+
+
+<script>
+
+    /* ======================================================
+       获取页面元素
+    ====================================================== */
+
+    const gameArea =
+        document.getElementById("gameArea");
+
+    const target =
+        document.getElementById("target");
+
+    const startOverlay =
+        document.getElementById("startOverlay");
+
+    const endOverlay =
+        document.getElementById("endOverlay");
+
+    const startButton =
+        document.getElementById("startButton");
+
+    const restartButton =
+        document.getElementById("restartButton");
+
+    const timeValue =
+        document.getElementById("timeValue");
+
+    const scoreValue =
+        document.getElementById("scoreValue");
+
+    const comboValue =
+        document.getElementById("comboValue");
+
+    const bestValue =
+        document.getElementById("bestValue");
+
+    const resultText =
+        document.getElementById("resultText");
+
+
+
+    /* ======================================================
+       游戏数据
+    ====================================================== */
+
+    const GAME_TIME = 30000;
+
+    let score = 0;
+
+    let combo = 0;
+
+    let gameRunning = false;
+
+    let gameStartTime = 0;
+
+    let timerInterval = null;
+
+    let moveTimeout = null;
+
+
+
+    /* ======================================================
+       读取最高分
+    ====================================================== */
+
+    let bestScore =
+        Number(
+            localStorage.getItem(
+                "susato_click_best"
+            )
+        ) || 0;
+
+    bestValue.textContent =
+        bestScore;
+
+
+
+    /* ======================================================
+       开始游戏
+    ====================================================== */
+
+    function startGame() {
+
+        score = 0;
+
+        combo = 0;
+
+        gameRunning = true;
+
+        gameStartTime =
+            Date.now();
+
+        scoreValue.textContent =
+            "0";
+
+        comboValue.textContent =
+            "0";
+
+        timeValue.textContent =
+            "30.0";
+
+        startOverlay
+            .classList
+            .add("hidden");
+
+        endOverlay
+            .classList
+            .add("hidden");
+
+        target
+            .classList
+            .add("active");
+
+        moveTarget();
+
+        startMoveTimer();
+
+        timerInterval =
+            setInterval(
+                updateTimer,
+                50
+            );
+
+    }
+
+
+
+    /* ======================================================
+       更新倒计时
+    ====================================================== */
+
+    function updateTimer() {
+
+        if (!gameRunning) {
+            return;
+        }
+
+        const elapsed =
+            Date.now() -
+            gameStartTime;
+
+        const remaining =
+            Math.max(
+                0,
+                GAME_TIME - elapsed
+            );
+
+        timeValue.textContent =
+            (remaining / 1000)
+                .toFixed(1);
+
+        if (remaining <= 0) {
+
+            endGame();
+
+        }
+
+    }
+
+
+
+    /* ======================================================
+       随机移动目标
+    ====================================================== */
+
+    function moveTarget() {
+
+        if (!gameRunning) {
+            return;
+        }
+
+        const areaRect =
+            gameArea.getBoundingClientRect();
+
+        const targetSize =
+            target.offsetWidth;
+
+        const padding =
+            targetSize / 2 + 12;
+
+        const minX =
+            padding;
+
+        const maxX =
+            areaRect.width -
+            padding;
+
+        const minY =
+            padding;
+
+        const maxY =
+            areaRect.height -
+            padding;
+
+        const randomX =
+            minX +
+            Math.random() *
+            (maxX - minX);
+
+        const randomY =
+            minY +
+            Math.random() *
+            (maxY - minY);
+
+        target.style.left =
+            randomX + "px";
+
+        target.style.top =
+            randomY + "px";
+
+    }
+
+
+
+    /* ======================================================
+       自动移动目标
+
+       游戏越接近结束，
+       目标移动速度越快
+    ====================================================== */
+
+    function startMoveTimer() {
+
+        clearTimeout(
+            moveTimeout
+        );
+
+        if (!gameRunning) {
+            return;
+        }
+
+        const elapsed =
+            Date.now() -
+            gameStartTime;
+
+        const progress =
+            Math.min(
+                1,
+                elapsed /
+                GAME_TIME
+            );
+
+        const speed =
+            950 -
+            progress * 400;
+
+        moveTimeout =
+            setTimeout(
+                () => {
+
+                    moveTarget();
+
+                    startMoveTimer();
+
+                },
+                speed
+            );
+
+    }
+
+
+
+    /* ======================================================
+       点击目标
+    ====================================================== */
+
+    target.addEventListener(
+        "pointerdown",
+        function (event) {
+
+            if (!gameRunning) {
+                return;
+            }
+
+            event.preventDefault();
+            event.stopPropagation();
+
+            combo++;
+
+            const comboBonus =
+                Math.min(
+                    combo * 10,
+                    200
+                );
+
+            const gainedScore =
+                100 +
+                comboBonus;
+
+            score +=
+                gainedScore;
+
+            scoreValue.textContent =
+                score;
+
+            comboValue.textContent =
+                combo;
+
+            comboValue
+                .classList
+                .remove("pop");
+
+            void comboValue.offsetWidth;
+
+            comboValue
+                .classList
+                .add("pop");
+
+
+            createScoreFloat(
+                event.clientX,
+                event.clientY,
+                gainedScore
+            );
+
+
+            target
+                .classList
+                .add("hit");
+
+            setTimeout(
+                () => {
+
+                    target
+                        .classList
+                        .remove("hit");
+
+                },
+                90
+            );
+
+
+            moveTarget();
+
+            startMoveTimer();
+
+        }
+    );
+
+
+
+    /* ======================================================
+       点击空白区域
+
+       连击归零
+    ====================================================== */
+
+    gameArea.addEventListener(
+        "pointerdown",
+        function () {
+
+            if (!gameRunning) {
+                return;
+            }
+
+            combo = 0;
+
+            comboValue.textContent =
+                "0";
+
+        }
+    );
+
+
+
+    /* ======================================================
+       浮动分数
+    ====================================================== */
+
+    function createScoreFloat(
+        clientX,
+        clientY,
+        gainedScore
+    ) {
+
+        const rect =
+            gameArea.getBoundingClientRect();
+
+        const element =
+            document.createElement("div");
+
+        element.className =
+            "score-float";
+
+        element.textContent =
+            "+" + gainedScore;
+
+        element.style.left =
+            (clientX - rect.left) +
+            "px";
+
+        element.style.top =
+            (clientY - rect.top) +
+            "px";
+
+        gameArea.appendChild(
+            element
+        );
+
+        setTimeout(
+            () => {
+
+                element.remove();
+
+            },
+            700
+        );
+
+    }
+
+
+
+    /* ======================================================
+       游戏结束
+    ====================================================== */
+
+    function endGame() {
+
+        gameRunning = false;
+
+        clearInterval(
+            timerInterval
+        );
+
+        clearTimeout(
+            moveTimeout
+        );
+
+        target
+            .classList
+            .remove("active");
+
+        timeValue.textContent =
+            "0.0";
+
+
+        let newRecord =
+            false;
+
+
+        if (
+            score >
+            bestScore
+        ) {
+
+            bestScore =
+                score;
+
+            newRecord =
+                true;
+
+            localStorage.setItem(
+                "susato_click_best",
+                bestScore
+            );
+
+            bestValue.textContent =
+                bestScore;
+
+        }
+
+
+        if (newRecord) {
+
+            resultText.innerHTML =
+                "SCORE / " +
+                score +
+                "<br><br>" +
+                "NEW RECORD";
+
+        } else {
+
+            resultText.innerHTML =
+                "SCORE / " +
+                score +
+                "<br><br>" +
+                "BEST / " +
+                bestScore;
+
+        }
+
+
+        endOverlay
+            .classList
+            .remove("hidden");
+
+    }
+
+
+
+    /* ======================================================
+       按钮
+    ====================================================== */
+
+    startButton.addEventListener(
+        "click",
+        startGame
+    );
+
+    restartButton.addEventListener(
+        "click",
+        startGame
+    );
+
+</script>
+
+
+</body>
+
+</html>
