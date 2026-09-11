@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>SUSATO</title>
 
     <style>
@@ -33,7 +32,6 @@
             text-decoration: none;
         }
 
-        /* 顶部导航 */
         header {
             width: 100%;
             padding: 28px 8%;
@@ -70,13 +68,13 @@
             opacity: 0.5;
         }
 
-        /* 首屏 */
         .hero {
             min-height: 100vh;
-            padding: 160px 8% 80px;
-            display: flex;
+            padding: 150px 8% 80px;
+            display: grid;
+            grid-template-columns: 1fr 0.85fr;
+            gap: 80px;
             align-items: center;
-            justify-content: space-between;
         }
 
         .hero-text {
@@ -111,7 +109,24 @@
             margin-top: 42px;
         }
 
-        /* 通用区块 */
+        .hero-image {
+            width: 100%;
+        }
+
+        .hero-image img {
+            display: block;
+            width: 100%;
+            height: 620px;
+            object-fit: cover;
+            filter: saturate(0.85);
+            transition: 0.6s ease;
+        }
+
+        .hero-image img:hover {
+            transform: scale(0.985);
+            filter: saturate(1);
+        }
+
         section {
             padding: 110px 8%;
         }
@@ -135,7 +150,6 @@
             letter-spacing: 3px;
         }
 
-        /* 关于我 */
         .about {
             border-top: 1px solid #dedbd4;
         }
@@ -150,7 +164,6 @@
             margin-bottom: 20px;
         }
 
-        /* 作品 */
         .works {
             border-top: 1px solid #dedbd4;
         }
@@ -189,7 +202,6 @@
             color: #77716a;
         }
 
-        /* 联系方式 */
         .contact {
             border-top: 1px solid #dedbd4;
             padding-bottom: 140px;
@@ -204,7 +216,6 @@
             letter-spacing: 2px;
         }
 
-        /* 页脚 */
         footer {
             border-top: 1px solid #dedbd4;
             padding: 30px 8%;
@@ -215,9 +226,7 @@
             letter-spacing: 2px;
         }
 
-        /* 手机适配 */
         @media (max-width: 800px) {
-
             header {
                 padding: 22px 6%;
             }
@@ -228,6 +237,9 @@
             }
 
             .hero {
+                grid-template-columns: 1fr;
+                gap: 50px;
+                padding-top: 140px;
                 padding-left: 6%;
                 padding-right: 6%;
             }
@@ -235,6 +247,10 @@
             section {
                 padding-left: 6%;
                 padding-right: 6%;
+            }
+
+            .hero-image img {
+                height: 460px;
             }
 
             .work-grid {
@@ -264,56 +280,47 @@
         </nav>
     </header>
 
-
     <main>
 
         <section class="hero" id="home">
 
             <div class="hero-text">
-
-                <div class="small-title">
-                    PERSONAL WEBSITE
-                </div>
+                <div class="small-title">PERSONAL WEBSITE</div>
 
                 <h1>SUSATO</h1>
 
                 <div class="hero-description">
-                    欢迎来到我的个人空间。<br>
-                    在这里记录创作、灵感与正在进行的作品。
+                    日常、创作与灵感。<br>
+                    记录那些值得留下的片刻。
                 </div>
 
                 <div class="hero-line"></div>
+            </div>
 
+            <div class="hero-image">
+                <img src="hero.png" alt="日系主页主视觉图片">
             </div>
 
         </section>
 
-
         <section class="about" id="about">
-
             <div class="section-title">
                 <span>ABOUT</span>
                 <h2>关于我</h2>
             </div>
 
             <div class="about-content">
-
                 <p>
-                    这里可以写你的个人介绍。
+                    你好，这里是我的个人主页。
                 </p>
 
                 <p>
-                    比如你的兴趣、正在制作的作品、
-                    喜欢的领域，或者你希望别人如何认识你。
+                    我喜欢记录灵感、整理想法，也会在这里展示我感兴趣的内容与个人作品。
                 </p>
-
             </div>
-
         </section>
 
-
         <section class="works" id="works">
-
             <div class="section-title">
                 <span>WORKS</span>
                 <h2>我的作品</h2>
@@ -340,43 +347,26 @@
                 </div>
 
             </div>
-
         </section>
 
-
         <section class="contact" id="contact">
-
             <div class="section-title">
                 <span>CONTACT</span>
                 <h2>联系</h2>
             </div>
 
-            <p>
-                GitHub
-            </p>
+            <p>GitHub</p>
 
-            <a
-                class="contact-link"
-                href="https://github.com/harley922"
-                target="_blank">
+            <a class="contact-link" href="https://github.com/harley922" target="_blank">
                 github.com/harley922
             </a>
-
         </section>
 
     </main>
 
-
     <footer>
-
-        <div>
-            © 2026 SUSATO
-        </div>
-
-        <div>
-            Designed by SUSATO
-        </div>
-
+        <div>© 2026 SUSATO</div>
+        <div>Designed by SUSATO</div>
     </footer>
 
 </body>
